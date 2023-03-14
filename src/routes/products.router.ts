@@ -1,19 +1,12 @@
-import { Router } from '../config/deps.ts'
-import {
-  createProduct,
-  deleteProduct,
-  findProduct,
-  updateProduct,
-  findAllProducts,
-} from '../controllers/products.controller.ts';
+import { Router } from 'npm:express';
+import { createProducts, getAllProducts, updateProduct, deleteProduct, getProductById } from '../controllers/products.controller.ts';
 
-const router = new Router().prefix('/products')
+const router = Router();
 
-router.get('/', findAllProducts)
-router.get('/:id', findProduct)
-router.delete('/:productId', deleteProduct)
-router.patch('/', updateProduct)
-router.post('/', createProduct);
+router.get('/', getAllProducts);
+router.get('/:id', getProductById);
+router.post('/', createProducts);
+router.put('/:id', updateProduct);
+router.delete('/:id', deleteProduct);
 
-
-export default router.routes();
+export default router;

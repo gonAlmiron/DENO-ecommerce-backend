@@ -1,16 +1,13 @@
-import express, { Express, Request, Response } from "npm:express"
+import express, { type Express } from "npm:express"
+import routerProducts from '../routes/products.router.ts'
+import '../persistence/db.ts'
+import { config } from '../config/deps.ts'
 
 const app: Express = express();
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true}));
 
-app.get('/', (req: Request, res: Response)=>{
-    res.send('Hola Deno desde expresss!')
-});
-
-app.post('/', (req: Request, res: Response)=>{
-    console.log(req.body);
-});
-
+app.use('/products', routerProducts)
 
 export default app

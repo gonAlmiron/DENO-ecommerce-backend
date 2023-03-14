@@ -1,4 +1,4 @@
-import {Schema, model} from 'npm:mongoose'
+import { Schema, model } from 'npm:mongoose';
 
 export interface Product {
     name: string;
@@ -8,6 +8,9 @@ export interface Product {
 const productSchema = new Schema<Product>({
     name: String,
     price: Number
-})
+},
+{
+    versionKey: false
+});
 
-export default model<Product>('Product', productSchema)
+export default model<Product>('Product', productSchema);
